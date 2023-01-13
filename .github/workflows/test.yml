@@ -1,0 +1,30 @@
+
+name: "Reproduction"
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  repro:
+    name: Reproduction
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 2
+      - name: Check if Prettier files were changed in this branch/commit
+        id: changed-prettier-files
+        uses: tj-actions/changed-files@ca8881ae34b5c14a5d604cc8eac1e791d74a6809
+        with:
+          files: |
+            **/*.js
+            **/*.jsx
+            **/*.ts
+            **/*.tsx
+            **/*.css
+            **/*.scss
+            **/*.html
+            **/*.md
+            **/*.yaml
+            **/*.yml
